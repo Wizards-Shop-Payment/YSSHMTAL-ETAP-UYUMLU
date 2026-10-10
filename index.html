@@ -1,0 +1,715 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#0b7775">
+<title>Yavuz Sultan Selim Han MTAL | Hatay Yayladağı</title>
+<style>
+/* ETAP uyumluluğu hedeflenerek sade CSS kullanılmıştır. */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#183638;
+  background:#f2f8f7;
+  line-height:1.6;
+}
+button,input,textarea{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer}
+img{max-width:100%}
+:root{
+  --teal:#087f7c;
+  --teal-dark:#075b5a;
+  --ink:#183638;
+  --muted:#6d8585;
+  --line:#dce9e7;
+  --white:#fff;
+  --pale:#e7f5f2;
+  --shadow:0 12px 35px rgba(15,68,66,.09);
+}
+.topline{height:5px;background:linear-gradient(90deg,#075b5a,#12b6a7,#8ce0ce)}
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  max-width:1220px;margin:auto;padding:13px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{
+  width:49px;height:49px;flex-shrink:0;border-radius:15px;
+  background:linear-gradient(145deg,#0b7775,#16b6a5);
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-weight:bold;font-size:14px;
+  box-shadow:0 6px 15px rgba(8,127,124,.2);
+}
+.brand-title{font-weight:bold;font-size:14px;line-height:1.35}
+.brand-sub{font-size:11px;color:var(--muted);margin-top:3px}
+.header-actions{display:flex;align-items:center;gap:10px}
+.status-pill{
+  padding:7px 12px;border:1px solid #cde8e2;border-radius:30px;
+  background:#f0faf7;color:#08756f;font-size:12px;font-weight:bold;
+}
+.menu-button{
+  display:none;border:1px solid var(--line);background:#fff;
+  border-radius:12px;padding:9px 12px;color:var(--ink);
+}
+.navbar{border-top:1px solid #eef3f2}
+.nav-inner{
+  max-width:1220px;margin:auto;padding:0 22px;
+  display:flex;gap:5px;align-items:center;overflow-x:auto;
+}
+.nav-link{
+  display:block;white-space:nowrap;padding:13px 15px;
+  color:#5a7372;font-size:13px;font-weight:bold;
+  border-bottom:3px solid transparent;
+}
+.nav-link:hover,.nav-link.active{color:var(--teal);border-bottom-color:var(--teal)}
+main{max-width:1220px;margin:auto;padding:28px 22px 50px}
+.page{display:none}
+.page.active{display:block}
+.hero{
+  position:relative;overflow:hidden;border-radius:28px;
+  padding:48px;background:linear-gradient(120deg,#073f42,#087b78 58%,#19a89a);
+  color:#fff;box-shadow:var(--shadow);
+}
+.hero:before{
+  content:"";position:absolute;width:300px;height:300px;border-radius:50%;
+  background:rgba(255,255,255,.07);right:-65px;top:-100px;
+}
+.hero:after{
+  content:"";position:absolute;width:190px;height:190px;border-radius:50%;
+  background:rgba(144,235,213,.09);right:150px;bottom:-120px;
+}
+.hero-content{position:relative;z-index:1;max-width:720px}
+.eyebrow{
+  display:inline-block;border:1px solid rgba(255,255,255,.28);
+  border-radius:30px;padding:7px 12px;font-size:11px;
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:17px;
+}
+.hero h1{font-size:clamp(30px,5vw,51px);line-height:1.13;margin:0 0 17px;letter-spacing:-1.2px}
+.hero p{max-width:640px;color:#d9f1ed;font-size:16px;margin:0 0 25px}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:10px}
+.btn{
+  display:inline-block;border:0;border-radius:12px;padding:12px 17px;
+  font-weight:bold;font-size:13px;text-align:center;
+}
+.btn-light{background:white;color:#075e5b}
+.btn-outline{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);color:white}
+.btn-primary{background:var(--teal);color:white}
+.btn-soft{background:#e8f5f2;color:#08716e}
+.btn:hover{opacity:.87}
+.section-heading{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:15px;margin:34px 0 17px;
+}
+.section-heading h2{font-size:24px;letter-spacing:-.5px;margin:0}
+.section-heading p{color:var(--muted);font-size:13px;margin:5px 0 0}
+.small-label{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--teal);font-weight:bold}
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:17px;
+}
+.stat,.card,.panel,.field-card,.news-card,.staff-card,.gallery-card{
+  background:white;border:1px solid var(--line);border-radius:19px;
+  box-shadow:0 5px 18px rgba(20,70,67,.035);
+}
+.stat{padding:19px}
+.stat-number{font-size:29px;font-weight:bold;color:var(--teal);line-height:1.2}
+.stat-label{font-size:12px;color:var(--muted);margin-top:5px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.card{padding:22px}
+.card-icon{
+  width:45px;height:45px;border-radius:14px;background:var(--pale);
+  display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;
+}
+.card h3,.field-card h3,.news-card h3,.staff-card h3{font-size:17px;margin:0 0 8px}
+.card p,.field-card p,.news-card p,.staff-card p{font-size:13px;color:var(--muted);margin:0}
+.text-link{display:inline-block;margin-top:15px;color:var(--teal);font-size:13px;font-weight:bold}
+.panel{padding:25px}
+.panel h2,.panel h3{margin-top:0}
+.muted{color:var(--muted)}
+.page-banner{
+  padding:30px;border-radius:23px;background:linear-gradient(120deg,#e1f4ef,#f8fcfb);
+  border:1px solid #d7ebe6;margin-bottom:25px;
+}
+.page-banner h1{font-size:32px;line-height:1.2;margin:8px 0}
+.page-banner p{margin:8px 0 0;color:#617b79;max-width:720px}
+.field-card{padding:23px;position:relative;overflow:hidden}
+.field-card:before{content:"";display:block;height:4px;position:absolute;left:0;top:0;right:0;background:linear-gradient(90deg,#087f7c,#70d9c4)}
+.field-number{font-size:11px;color:var(--teal);font-weight:bold;letter-spacing:1px;margin-bottom:13px}
+.tag{display:inline-block;margin:13px 5px 0 0;padding:5px 9px;border-radius:20px;background:#edf7f4;color:#28756f;font-size:11px}
+.info-list{list-style:none;padding:0;margin:0}
+.info-list li{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.info-list li:last-child{border-bottom:0}
+.info-list strong{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
+.staff-card{padding:20px}
+.staff-avatar{
+  width:54px;height:54px;border-radius:17px;display:flex;align-items:center;
+  justify-content:center;background:linear-gradient(145deg,#d9f3ed,#a8e0d5);
+  color:#086e68;font-size:20px;font-weight:bold;margin-bottom:14px;
+}
+.badge{display:inline-block;margin-top:11px;font-size:11px;color:#08716e;background:#eaf7f3;border-radius:20px;padding:5px 9px}
+.news-tools{display:flex;gap:10px;margin-bottom:16px}
+.search-input{
+  width:100%;border:1px solid #d6e6e3;border-radius:12px;background:white;
+  padding:12px 14px;outline:none;color:var(--ink);
+}
+.search-input:focus,.form-control:focus{border-color:#44b8ab}
+.news-card{padding:21px}
+.news-date{font-size:11px;color:var(--teal);font-weight:bold;margin-bottom:10px}
+.news-card h3{line-height:1.4}
+.news-card .text-link{background:none;border:0;padding:0}
+.gallery-card{overflow:hidden;cursor:pointer;padding:0;text-align:left;color:var(--ink);width:100%}
+.gallery-art{
+  height:165px;display:flex;align-items:center;justify-content:center;
+  font-size:48px;background:linear-gradient(135deg,#e0f4ef,#a5dfd2);
+}
+.gallery-card:nth-child(2) .gallery-art{background:linear-gradient(135deg,#dce9f8,#a9c5e9)}
+.gallery-card:nth-child(3) .gallery-art{background:linear-gradient(135deg,#f8ead8,#efd0a8)}
+.gallery-card:nth-child(4) .gallery-art{background:linear-gradient(135deg,#e8e0f7,#c6b6eb)}
+.gallery-card:nth-child(5) .gallery-art{background:linear-gradient(135deg,#d9efdf,#a8d6b4)}
+.gallery-card:nth-child(6) .gallery-art{background:linear-gradient(135deg,#f7dfe5,#e8afbf)}
+.gallery-caption{padding:15px;font-size:13px;font-weight:bold}
+.form-control{
+  width:100%;padding:12px 13px;border:1px solid #d6e6e3;border-radius:11px;
+  margin:6px 0 14px;outline:none;background:white;color:var(--ink);
+}
+label{font-size:12px;font-weight:bold;color:#456361}
+textarea.form-control{min-height:120px;resize:vertical}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.footer{background:#103e40;color:#d7ece8}
+.footer-inner{
+  max-width:1220px;margin:auto;padding:28px 22px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.footer-title{font-weight:bold;color:white}
+.footer p{font-size:12px;color:#b2d0cc;margin:6px 0}
+.footer-links{display:flex;gap:14px;flex-wrap:wrap;font-size:12px}
+.footer-links a:hover{color:white}
+.credits{width:100%;border-top:1px solid rgba(255,255,255,.15);padding-top:17px;margin-top:10px}
+.credits strong{color:white}
+.modal{
+  display:none;position:fixed;z-index:100;left:0;top:0;width:100%;height:100%;
+  background:rgba(5,28,29,.78);padding:20px;align-items:center;justify-content:center;
+}
+.modal.open{display:flex}
+.modal-box{
+  max-width:540px;width:100%;background:white;border-radius:22px;
+  padding:25px;text-align:center;box-shadow:0 20px 70px rgba(0,0,0,.25);
+}
+.modal-art{font-size:70px;margin:15px}
+.modal-box h2{margin:8px 0}
+.modal-box p{color:var(--muted)}
+.empty-state{padding:25px;text-align:center;color:var(--muted);grid-column:1/-1}
+.notice{padding:14px 16px;border-radius:12px;background:#eaf7f2;color:#176a60;font-size:13px;margin-top:12px}
+@media(max-width:850px){
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:35px}
+  .contact-layout{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .header-inner{padding:12px 15px}
+  .brand-title{font-size:12px}
+  .brand-sub{font-size:10px}
+  .logo{width:42px;height:42px;border-radius:13px}
+  .status-pill{display:none}
+  .menu-button{display:block}
+  .navbar{display:none}
+  .navbar.mobile-open{display:block}
+  .nav-inner{padding:8px 12px;display:block}
+  .nav-link{padding:10px 12px;border-bottom:0;border-radius:9px}
+  .nav-link.active{background:#eaf7f3}
+  main{padding:18px 14px 35px}
+  .hero{padding:28px 22px;border-radius:22px}
+  .hero h1{font-size:32px}
+  .hero p{font-size:14px}
+  .grid-3,.grid-2{grid-template-columns:1fr}
+  .stats{gap:9px}
+  .stat{padding:15px}
+  .stat-number{font-size:25px}
+  .section-heading h2{font-size:21px}
+  .page-banner{padding:23px}
+  .page-banner h1{font-size:27px}
+  .panel,.card{padding:19px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#anasayfa" class="brand" data-page="anasayfa" aria-label="Ana sayfaya git">
+      <div class="logo">YSH</div>
+      <div>
+        <div class="brand-title">YAVUZ SULTAN SELİM HAN</div>
+        <div class="brand-sub">Mesleki ve Teknik Anadolu Lisesi · Hatay / Yayladağı</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <span class="status-pill">● Eğitim · Teknoloji · Gelecek</span>
+      <button class="menu-button" id="menuButton" type="button" aria-expanded="false">☰ Menü</button>
+    </div>
+  </div>
+  <nav class="navbar" id="navbar" aria-label="Ana menü">
+    <div class="nav-inner">
+      <a class="nav-link active" href="#anasayfa" data-page="anasayfa">Ana Sayfa</a>
+      <a class="nav-link" href="#okulumuz" data-page="okulumuz">Okulumuz</a>
+      <a class="nav-link" href="#alanlarimiz" data-page="alanlarimiz">Alanlarımız</a>
+      <a class="nav-link" href="#kadromuz" data-page="kadromuz">Kadromuz</a>
+      <a class="nav-link" href="#duyurular" data-page="duyurular">Duyurular</a>
+      <a class="nav-link" href="#galeri" data-page="galeri">Galeri</a>
+      <a class="nav-link" href="#iletisim" data-page="iletisim">İletişim</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- ANA SAYFA -->
+  <section class="page active" id="page-anasayfa">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">HATAY · YAYLADAĞI · MESLEKİ EĞİTİM</div>
+        <h1>Geleceğini bilgiyle,<br>beceriyle ve emekle kur.</h1>
+        <p>
+          Yavuz Sultan Selim Han Mesleki ve Teknik Anadolu Lisesi.
+          Mesleki becerileri, teknolojiyi ve üretken düşünceyi bir araya getiren
+          bir eğitim yolculuğu.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-light" type="button" data-go="okulumuz">Okulumuzu Tanıyın ↗</button>
+          <button class="btn btn-outline" type="button" data-go="alanlarimiz">Alanlarımızı Keşfedin</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-number">14</div><div class="stat-label">Derslik</div></div>
+      <div class="stat"><div class="stat-number">34</div><div class="stat-label">Öğretmen</div></div>
+      <div class="stat"><div class="stat-number">437</div><div class="stat-label">Öğrenci</div></div>
+      <div class="stat"><div class="stat-number">3</div><div class="stat-label">Mesleki alan</div></div>
+    </div>
+
+    <div class="section-heading">
+      <div><div class="small-label">EĞİTİM YOLCULUĞUMUZ</div><h2>Geleceğe hazırlayan alanlar</h2><p>İlgi alanını keşfet, yeteneklerini geliştir.</p></div>
+      <button class="btn btn-soft" type="button" data-go="alanlarimiz">Tüm alanlar →</button>
+    </div>
+    <div class="grid-3">
+      <article class="card">
+        <div class="card-icon">⌘</div><h3>Bilişim Teknolojileri</h3>
+        <p>Yazılım, bilgisayar sistemleri ve dijital çözümler dünyasına adım at.</p>
+        <button class="text-link" type="button" data-go="alanlarimiz">Alanı incele →</button>
+      </article>
+      <article class="card">
+        <div class="card-icon">ϟ</div><h3>Elektrik-Elektronik</h3>
+        <p>Elektrik sistemleri ve elektronik teknolojileri hakkında mesleki bilgi edin.</p>
+        <button class="text-link" type="button" data-go="alanlarimiz">Alanı incele →</button>
+      </article>
+      <article class="card">
+        <div class="card-icon">▤</div><h3>Muhasebe ve Finansman</h3>
+        <p>İşletmelerin finansal süreçlerini ve muhasebenin temel uygulamalarını öğren.</p>
+        <button class="text-link" type="button" data-go="alanlarimiz">Alanı incele →</button>
+      </article>
+    </div>
+
+    <div class="section-heading">
+      <div><div class="small-label">OKULUMUZ</div><h2>Bilgi, beceri ve gelişim</h2></div>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="card-icon">✦</div>
+        <h3>Mesleki eğitim, gerçek beceriler</h3>
+        <p class="muted">Mesleki eğitim; teorik bilgiyi uygulama, problem çözme ve üretken düşünceyle bir araya getirmeyi amaçlar.</p>
+        <button class="btn btn-primary" type="button" data-go="okulumuz">Okulumuz hakkında</button>
+      </div>
+      <div class="panel">
+        <div class="card-icon">↗</div>
+        <h3>Resmî okul sayfası</h3>
+        <p class="muted">Güncel ve resmî okul duyuruları için Millî Eğitim Bakanlığı okul sayfasını ziyaret edebilirsin.</p>
+        <a class="btn btn-soft" href="https://yysshmtal.meb.k12.tr/" target="_blank" rel="noopener">Resmî siteyi aç ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OKULUMUZ -->
+  <section class="page" id="page-okulumuz">
+    <div class="page-banner">
+      <div class="small-label">BİZ KİMİZ?</div>
+      <h1>Okulumuz</h1>
+      <p>Mesleki gelişimi, bilgiye erişimi ve geleceğe hazırlığı odağına alan bir eğitim ortamı.</p>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="card-icon">⌂</div>
+        <h2>Yavuz Sultan Selim Han Mesleki ve Teknik Anadolu Lisesi</h2>
+        <p class="muted">Hatay'ın Yayladağı ilçesinde bulunan okulumuz, mesleki ve teknik eğitim alanlarında öğrencilerin bilgi ve becerilerini geliştirmeyi hedefler.</p>
+        <p class="muted">Bu web sitesi okul tanıtımı amacıyla hazırlanmış bir öğrenci projesidir. Resmî okul sitesi değildir.</p>
+      </div>
+      <div class="panel">
+        <h3>Okul bilgileri</h3>
+        <ul class="info-list">
+          <li><strong>Okul adı</strong>Yavuz Sultan Selim Han Mesleki ve Teknik Anadolu Lisesi</li>
+          <li><strong>İl</strong>Hatay</li>
+          <li><strong>İlçe</strong>Yayladağı</li>
+          <li><strong>Eğitim türü</strong>Mesleki ve teknik ortaöğretim</li>
+          <li><strong>Resmî internet sitesi</strong><a class="text-link" href="https://yysshmtal.meb.k12.tr/" target="_blank" rel="noopener">yysshmtal.meb.k12.tr ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-heading"><div><div class="small-label">EĞİTİM ANLAYIŞI</div><h2>Hedeflerimiz</h2></div></div>
+    <div class="grid-3">
+      <div class="card"><div class="card-icon">◎</div><h3>Gelişim</h3><p>Öğrencilerin akademik ve mesleki becerilerini geliştirmesine destek olmak.</p></div>
+      <div class="card"><div class="card-icon">⚙</div><h3>Uygulama</h3><p>Mesleki bilgiyi uygulama ve üretim süreçleriyle buluşturmak.</p></div>
+      <div class="card"><div class="card-icon">✧</div><h3>Gelecek</h3><p>Öğrencileri değişen teknoloji ve çalışma hayatına hazırlamak.</p></div>
+    </div>
+  </section>
+
+  <!-- ALANLARIMIZ -->
+  <section class="page" id="page-alanlarimiz">
+    <div class="page-banner">
+      <div class="small-label">MESLEKİ VE TEKNİK EĞİTİM</div>
+      <h1>Alanlarımız</h1>
+      <p>Farklı yeteneklere ve kariyer hedeflerine yönelik mesleki eğitim alanlarını keşfet.</p>
+    </div>
+    <div class="grid-3">
+      <article class="field-card">
+        <div class="field-number">ALAN 01 · TEKNOLOJİ</div>
+        <div class="card-icon">⌘</div>
+        <h3>Bilişim Teknolojileri</h3>
+        <p>Bilgisayar sistemleri, yazılım geliştirme ve bilgi teknolojileri konularına ilgi duyan öğrenciler için.</p>
+        <span class="tag">Yazılım</span><span class="tag">Bilgisayar</span><span class="tag">Teknoloji</span>
+      </article>
+      <article class="field-card">
+        <div class="field-number">ALAN 02 · ELEKTRONİK</div>
+        <div class="card-icon">ϟ</div>
+        <h3>Elektrik-Elektronik Teknolojisi</h3>
+        <p>Elektrik tesisatları, elektronik sistemler ve teknik uygulamalarla ilgili temel mesleki beceriler.</p>
+        <span class="tag">Elektrik</span><span class="tag">Elektronik</span><span class="tag">Uygulama</span>
+      </article>
+      <article class="field-card">
+        <div class="field-number">ALAN 03 · FİNANS</div>
+        <div class="card-icon">▤</div>
+        <h3>Muhasebe ve Finansman</h3>
+        <p>İşletme kayıtları, muhasebe uygulamaları ve finansal süreçlerin temel ilkeleri.</p>
+        <span class="tag">Muhasebe</span><span class="tag">Finans</span><span class="tag">İşletme</span>
+      </article>
+    </div>
+    <div class="notice">Not: Alanların güncel durumu, dal seçenekleri ve kayıt koşulları için okulun resmî kaynaklarından bilgi alınmalıdır.</div>
+  </section>
+
+  <!-- KADROMUZ -->
+  <section class="page" id="page-kadromuz">
+    <div class="page-banner">
+      <div class="small-label">EĞİTİM AİLESİ</div>
+      <h1>Kadromuz</h1>
+      <p>Öğrencilerin öğrenme ve mesleki gelişim yolculuğuna katkı sunan eğitim ekibi.</p>
+    </div>
+    <div class="panel" style="margin-bottom:18px">
+      <h2>Öğretmenlerimiz ve çalışanlarımız</h2>
+      <p class="muted">Bu tanıtım sürümünde kişisel bilgiler doğrulanmadığı için öğretmen isimleri uydurulmamıştır. Güncel isim ve görevler okulun resmî kaynaklarından eklenebilir.</p>
+    </div>
+    <div class="grid-3">
+      <div class="staff-card"><div class="staff-avatar">E</div><h3>Eğitim Yönetimi</h3><p>Okulun eğitim ve yönetim süreçleri.</p><span class="badge">Yönetim</span></div>
+      <div class="staff-card"><div class="staff-avatar">Ö</div><h3>Alan Öğretmenleri</h3><p>Mesleki ve teknik derslerde eğitim desteği.</p><span class="badge">Eğitim</span></div>
+      <div class="staff-card"><div class="staff-avatar">D</div><h3>Destek Ekibi</h3><p>Okul yaşamının günlük işleyişine katkı.</p><span class="badge">Destek</span></div>
+    </div>
+  </section>
+
+  <!-- DUYURULAR -->
+  <section class="page" id="page-duyurular">
+    <div class="page-banner">
+      <div class="small-label">HABERLER VE BİLGİLENDİRMELER</div>
+      <h1>Duyurular</h1>
+      <p>Bu demo bölümünde örnek içerikler bulunur. Resmî duyuru olarak değerlendirilmemelidir.</p>
+    </div>
+    <div class="news-tools">
+      <input class="search-input" id="newsSearch" type="search" placeholder="Duyurularda ara..." aria-label="Duyurularda ara">
+    </div>
+    <div class="grid-3" id="newsGrid">
+      <article class="news-card" data-search="eğitim öğretim okul akademik">
+        <div class="news-date">OKUL BİLGİLENDİRMESİ</div>
+        <h3>Eğitim ve öğretim dönemi</h3>
+        <p>Eğitim takvimi ve okul programıyla ilgili güncel bilgiler resmî kanallardan takip edilmelidir.</p>
+        <a class="text-link" href="https://yysshmtal.meb.k12.tr/" target="_blank" rel="noopener">Resmî duyuruları incele ↗</a>
+      </article>
+      <article class="news-card" data-search="bilişim teknoloji yazılım bilgisayar">
+        <div class="news-date">ALAN TANITIMI</div>
+        <h3>Bilişim teknolojileri</h3>
+        <p>Yazılım ve bilgisayar teknolojileri, dijital dünyada gelişmek isteyen öğrenciler için önemli bir alandır.</p>
+        <button class="text-link" type="button" data-go="alanlarimiz">Alanı keşfet →</button>
+      </article>
+      <article class="news-card" data-search="elektrik elektronik mesleki uygulama">
+        <div class="news-date">ALAN TANITIMI</div>
+        <h3>Elektrik-elektronik teknolojisi</h3>
+        <p>Teknik bilgi ve uygulama becerilerinin birlikte geliştirildiği mesleki alanlardan biridir.</p>
+        <button class="text-link" type="button" data-go="alanlarimiz">Alanı keşfet →</button>
+      </article>
+      <article class="news-card" data-search="muhasebe finansman işletme">
+        <div class="news-date">ALAN TANITIMI</div>
+        <h3>Muhasebe ve finansman</h3>
+        <p>İşletmelerin mali kayıtlarını ve temel finansal süreçlerini tanıma fırsatı.</p>
+        <button class="text-link" type="button" data-go="alanlarimiz">Alanı keşfet →</button>
+      </article>
+    </div>
+    <p class="muted" id="noNews" style="display:none">Aramanızla eşleşen bir içerik bulunamadı.</p>
+  </section>
+
+  <!-- GALERİ -->
+  <section class="page" id="page-galeri">
+    <div class="page-banner">
+      <div class="small-label">OKULDAN KARELER</div>
+      <h1>Galeri</h1>
+      <p>Okul, eğitim ve teknoloji temalı örnek görsel kartları. Kartlara tıklayarak büyütebilirsin.</p>
+    </div>
+    <div class="grid-3">
+      <button class="gallery-card" type="button" data-art="🏫" data-title="Okul yaşamı" data-description="Okul yaşamı ve eğitim ortamı."><div class="gallery-art">🏫</div><div class="gallery-caption">Okul yaşamı</div></button>
+      <button class="gallery-card" type="button" data-art="💻" data-title="Bilişim teknolojileri" data-description="Bilgisayar ve yazılım teknolojileri."><div class="gallery-art">💻</div><div class="gallery-caption">Bilişim teknolojileri</div></button>
+      <button class="gallery-card" type="button" data-art="⚡" data-title="Teknik eğitim" data-description="Teknik alanlarda öğrenme ve uygulama."><div class="gallery-art">⚡</div><div class="gallery-caption">Teknik eğitim</div></button>
+      <button class="gallery-card" type="button" data-art="📚" data-title="Öğrenme ortamı" data-description="Bilgiye erişim ve kişisel gelişim."><div class="gallery-art">📚</div><div class="gallery-caption">Öğrenme ortamı</div></button>
+      <button class="gallery-card" type="button" data-art="🔧" data-title="Uygulama ve üretim" data-description="Mesleki uygulamalar ve beceri gelişimi."><div class="gallery-art">🔧</div><div class="gallery-caption">Uygulama ve üretim</div></button>
+      <button class="gallery-card" type="button" data-art="🌱" data-title="Geleceğe hazırlık" data-description="Yeni becerilerle geleceğe hazırlık."><div class="gallery-art">🌱</div><div class="gallery-caption">Geleceğe hazırlık</div></button>
+    </div>
+    <div class="notice">Gerçek okul fotoğrafları eklenecekse kullanım izni alınmalı ve görsellerin doğru biçimde tanımlanmasına dikkat edilmelidir.</div>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section class="page" id="page-iletisim">
+    <div class="page-banner">
+      <div class="small-label">BİZE ULAŞIN</div>
+      <h1>İletişim</h1>
+      <p>Okulun iletişim bilgilerini ve resmî bağlantısını burada bulabilirsin.</p>
+    </div>
+    <div class="contact-layout">
+      <div class="panel">
+        <h2>İletişim bilgileri</h2>
+        <ul class="info-list">
+          <li><strong>Okul</strong>Yavuz Sultan Selim Han Mesleki ve Teknik Anadolu Lisesi</li>
+          <li><strong>Konum</strong>Yayladağı, Hatay, Türkiye</li>
+          <li><strong>Resmî internet sitesi</strong><a href="https://yysshmtal.meb.k12.tr/" target="_blank" rel="noopener" class="text-link">Okulun resmî sayfası ↗</a></li>
+          <li><strong>Adres ve telefon</strong>Güncel bilgiler için resmî okul sayfasını kontrol edin.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Mesaj oluştur</h2>
+        <p class="muted">Form, cihazındaki e-posta uygulamasında bir mesaj taslağı açar. Mesaj otomatik gönderilmez.</p>
+        <form id="contactForm">
+          <label for="senderName">Adın</label>
+          <input class="form-control" id="senderName" name="senderName" type="text" placeholder="Adını yaz" required>
+          <label for="senderEmail">E-posta adresin</label>
+          <input class="form-control" id="senderEmail" name="senderEmail" type="email" placeholder="ornek@eposta.com" required>
+          <label for="senderMessage">Mesajın</label>
+          <textarea class="form-control" id="senderMessage" name="senderMessage" placeholder="Mesajını yaz..." required></textarea>
+          <button class="btn btn-primary" type="submit">E-posta taslağı oluştur ↗</button>
+          <p id="formMessage" class="muted" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-title">Yavuz Sultan Selim Han MTAL</div>
+      <p>Hatay · Yayladağı</p>
+      <p>Mesleki eğitimle geleceğe.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#anasayfa" data-page="anasayfa">Ana Sayfa</a>
+      <a href="#okulumuz" data-page="okulumuz">Okulumuz</a>
+      <a href="#alanlarimiz" data-page="alanlarimiz">Alanlarımız</a>
+      <a href="https://yysshmtal.meb.k12.tr/" target="_blank" rel="noopener">Resmî site ↗</a>
+    </div>
+    <div class="credits">
+      <p><strong>SİTE BİLGİLERİ VE TASARIM</strong></p>
+      <p><strong>Ana mimari ve geliştirme:</strong> Adem Arslan</p>
+      <p><strong>İçerik ve görsel katkısı:</strong> Bilal Avaz</p>
+      <p>Bu site eğitim ve tanıtım amacıyla hazırlanmış bağımsız bir öğrenci projesidir; okulun resmî internet sitesi değildir.</p>
+      <p>© <span id="year">2026</span> · Tüm hakları saklıdır.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <div class="modal-art" id="modalArt">🏫</div>
+    <h2 id="modalTitle">Galeri</h2>
+    <p id="modalDescription"></p>
+    <button class="btn btn-primary" id="closeModal" type="button">Kapat</button>
+  </div>
+</div>
+
+<script>
+/* Klasik JavaScript: eski Chromium tabanlı tarayıcılarla daha geniş uyumluluk. */
+(function(){
+  "use strict";
+
+  var pageNames = [
+    "anasayfa","okulumuz","alanlarimiz","kadromuz",
+    "duyurular","galeri","iletisim"
+  ];
+
+  var navbar = document.getElementById("navbar");
+  var menuButton = document.getElementById("menuButton");
+  var navLinks = document.querySelectorAll("[data-page]");
+  var goButtons = document.querySelectorAll("[data-go]");
+
+  function showPage(name, updateAddress){
+    var i, page, links;
+    if(pageNames.indexOf(name) === -1){ name = "anasayfa"; }
+
+    for(i=0;i<pageNames.length;i++){
+      page = document.getElementById("page-" + pageNames[i]);
+      if(page){
+        page.className = pageNames[i] === name ? "page active" : "page";
+      }
+    }
+
+    links = document.querySelectorAll(".nav-link");
+    for(i=0;i<links.length;i++){
+      links[i].className = links[i].getAttribute("data-page") === name ?
+        "nav-link active" : "nav-link";
+    }
+
+    navbar.className = "navbar";
+    menuButton.setAttribute("aria-expanded","false");
+
+    if(updateAddress !== false){
+      if(window.history && window.history.pushState){
+        window.history.pushState({page:name},"","#" + name);
+      }else{
+        window.location.hash = name;
+      }
+    }
+
+    window.scrollTo(0,0);
+  }
+
+  for(var i=0;i<navLinks.length;i++){
+    navLinks[i].addEventListener("click",function(event){
+      var name = this.getAttribute("data-page");
+      if(name){
+        event.preventDefault();
+        showPage(name,true);
+      }
+    });
+  }
+
+  for(var j=0;j<goButtons.length;j++){
+    goButtons[j].addEventListener("click",function(){
+      showPage(this.getAttribute("data-go"),true);
+    });
+  }
+
+  menuButton.addEventListener("click",function(){
+    var isOpen = navbar.className.indexOf("mobile-open") !== -1;
+    navbar.className = isOpen ? "navbar" : "navbar mobile-open";
+    menuButton.setAttribute("aria-expanded",isOpen ? "false" : "true");
+  });
+
+  window.addEventListener("popstate",function(){
+    var name = window.location.hash.replace("#","");
+    showPage(name,false);
+  });
+
+  window.addEventListener("hashchange",function(){
+    var name = window.location.hash.replace("#","");
+    if(pageNames.indexOf(name) !== -1){
+      showPage(name,false);
+    }
+  });
+
+  /* Duyuru arama */
+  var newsSearch = document.getElementById("newsSearch");
+  var newsCards = document.querySelectorAll("#newsGrid .news-card");
+  var noNews = document.getElementById("noNews");
+
+  if(newsSearch){
+    newsSearch.addEventListener("input",function(){
+      var query = this.value.toLocaleLowerCase("tr-TR").replace(/^\s+|\s+$/g,"");
+      var visible = 0;
+      for(var k=0;k<newsCards.length;k++){
+        var text = (newsCards[k].innerText || newsCards[k].textContent || "").toLocaleLowerCase("tr-TR");
+        var extra = (newsCards[k].getAttribute("data-search") || "").toLocaleLowerCase("tr-TR");
+        var match = text.indexOf(query) !== -1 || extra.indexOf(query) !== -1;
+        newsCards[k].style.display = match ? "" : "none";
+        if(match){visible++;}
+      }
+      noNews.style.display = visible === 0 ? "block" : "none";
+    });
+  }
+
+  /* Galeri penceresi */
+  var modal = document.getElementById("galleryModal");
+  var modalArt = document.getElementById("modalArt");
+  var modalTitle = document.getElementById("modalTitle");
+  var modalDescription = document.getElementById("modalDescription");
+  var galleryCards = document.querySelectorAll(".gallery-card");
+  var closeModal = document.getElementById("closeModal");
+
+  function hideModal(){
+    modal.className = "modal";
+  }
+
+  for(var g=0;g<galleryCards.length;g++){
+    galleryCards[g].addEventListener("click",function(){
+      modalArt.textContent = this.getAttribute("data-art") || "🏫";
+      modalTitle.textContent = this.getAttribute("data-title") || "Galeri";
+      modalDescription.textContent = this.getAttribute("data-description") || "";
+      modal.className = "modal open";
+      closeModal.focus();
+    });
+  }
+
+  closeModal.addEventListener("click",hideModal);
+  modal.addEventListener("click",function(event){
+    if(event.target === modal){hideModal();}
+  });
+  document.addEventListener("keydown",function(event){
+    if(event.key === "Escape"){hideModal();}
+  });
+
+  /* İletişim: e-posta taslağı oluşturur. */
+  var contactForm = document.getElementById("contactForm");
+  contactForm.addEventListener("submit",function(event){
+    event.preventDefault();
+    var name = document.getElementById("senderName").value;
+    var email = document.getElementById("senderEmail").value;
+    var message = document.getElementById("senderMessage").value;
+    var subject = encodeURIComponent("Okul sitesi iletişim mesajı");
+    var body = encodeURIComponent(
+      "Gönderen: " + name + "\nE-posta: " + email + "\n\nMesaj:\n" + message
+    );
+    document.getElementById("formMessage").textContent =
+      "E-posta taslağı açılmaya çalışılıyor. Cihazda e-posta uygulaması yapılandırılmış olmalıdır.";
+    window.location.href = "mailto:?subject=" + subject + "&body=" + body;
+  });
+
+  /* Yıl bilgisi */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* Sayfa ilk açıldığında bağlantıdaki bölümü göster. */
+  var firstPage = window.location.hash.replace("#","");
+  if(pageNames.indexOf(firstPage) !== -1){
+    showPage(firstPage,false);
+  }else{
+    showPage("anasayfa",false);
+  }
+})();
+</script>
+</body>
+</html>
